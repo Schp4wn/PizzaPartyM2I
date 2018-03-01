@@ -7,27 +7,25 @@
   <div class="collapse navbar-collapse" [class.show]="isCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" (click)="changeRoute('/', 'Accueil')">Accueil</a>
+        <a class="nav-link" routerLink="/" (click)="changeRoute('/', 'Accueil')">{{ 'Home' | translate }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/pizzas" (click)="changeRoute('/pizzas', 'Pizzas')">Pizzas</a>
+        <a class="nav-link" routerLink="/pizzas" (click)="changeRoute('/pizzas', 'Pizzas')">{{ 'Pizzas' | translate }}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/contact" (click)="changeRoute('/contact', 'Nous contacter')">Nous contacter</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" dropdownToggle href="toto">
-          Dropdown
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+        <a class="nav-link" routerLink="/contact" (click)="changeRoute('/contact', 'Nous contacter')">{{ 'Contact us' | translate }}</a>
       </li>
     </ul>
     <ul class="navbar-nav mr-right">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" dropdownToggle href="#">
+          fr
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="switchLang('fr')">fr</a>
+          <a class="dropdown-item" (click)="switchLang('en')">en</a>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/register" (click)="changeRoute('/register', 'Inscription')">S'inscrire</a>
       </li>

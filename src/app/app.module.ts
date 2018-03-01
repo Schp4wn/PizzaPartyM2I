@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { createTranslateLoader } from './service/create-translate-loader';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeApi } from './service/fake-api.service';
@@ -53,8 +56,15 @@ import { ContactComponent } from './contact/contact.component';
       {path: 'register', component: RegisterComponent},
       {path: 'contact', component: ContactComponent}
     ]),
-    !environment.production ?
-      HttpClientInMemoryWebApiModule.forRoot(FakeApi) : []
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
+    environment.production ?
+      HttpClientInMemoryWebApiModule.forRoot(FakeApi, {passThruUnknownUrl: true}) : HttpClientInMemoryWebApiModule.forRoot(FakeApi, {passThruUnknownUrl: true})
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr' },

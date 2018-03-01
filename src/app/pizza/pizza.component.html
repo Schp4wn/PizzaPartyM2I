@@ -9,6 +9,6 @@
     <div>{{ pizza.id }}</div>
     <div>{{ pizza.name | uppercase }}</div>
     <input type="text" [(ngModel)]="pizza.name">
-    <div [hidden]="isHidden">{{ pizza.price | currency:'EUR' }}</div>
+    <div [hidden]="isHidden">{{ pizza.price | currency:'EUR':'symbol':'.2':lang }}</div>
   </div>
 </div>

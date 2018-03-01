@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +12,10 @@ export class MenuComponent implements OnInit {
   @Input() title: string;
   @Output() menuChange: EventEmitter<any> = new EventEmitter();
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private translate: TranslateService
+  ) { }
 
   ngOnInit() {
   }
@@ -24,5 +28,9 @@ export class MenuComponent implements OnInit {
   toggleMenu() {
     this.isCollapsed = !this.isCollapsed;
   }
+
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  } 
 
 }
