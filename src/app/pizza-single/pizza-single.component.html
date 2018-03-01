@@ -1,0 +1,8 @@
+<div *ngIf="pizza">
+    <a class="btn btn-primary" [routerLink]="['/pizza', pizza.id - 1]">Pizza suivante</a>
+  {{ pizza | json }}
+  <a class="btn btn-primary" [routerLink]="['/pizza', pizza.id + 1]">Pizza suivante</a>
+</div>
+<div *ngIf="!pizza">
+  Cette pizza n'existe pas !
+</div>

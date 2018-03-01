@@ -1,0 +1,9 @@
+<p [bg]="'red'">Directive exemple</p>
+
+<input type="text" #searchElement (keyup)="runSearch(searchElement.value)">
+
+<ul>
+  <li *ngFor="let pizza of pizzas">
+    {{ pizza.name }}
+  </li>
+</ul>

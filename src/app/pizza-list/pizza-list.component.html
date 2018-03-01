@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-lg-6">
+    <app-pizza [pizza]="selectedPizza"></app-pizza>
+  </div>
+  <div class="col-lg-6">
+    <form (submit)="createPizza()">
+      <label for="name">Nom:</label>
+      <input id="name" name="name" type="text" [(ngModel)]="newPizza.name">
+      <label for="price">Prix:</label>
+      <input id="price" name="price" type="text" [(ngModel)]="newPizza.price">
+      <button [disabled]="!isNewPizzaValid()" class="btn btn-primary">Ajouter la pizza</button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col-lg-3" *ngFor="let pizza of pizzas; let i = index"
+      (click)="onSelect(pizza)"
+      [class.selected]="pizza === selectedPizza">
+    <!-- {{ i + 1 }} / {{ pizzas.length }} - {{ pizza.name }} -->
+    <app-pizza [pizza]="pizza" [selected]="pizza === selectedPizza"></app-pizza>
+    <a [routerLink]="['/pizza', pizza.id]">Voir la pizza</a>
+    <button (click)="deletePizza(pizza)">Supprimer la pizza</button>
+  </div>
+</div>

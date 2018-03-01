@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">{{ title }}</a>
+  <button class="navbar-toggler" type="button" (click)="toggleMenu()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [class.show]="isCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" (click)="changeRoute('/', 'Accueil')">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/pizzas" (click)="changeRoute('/pizzas', 'Pizzas')">Pizzas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact" (click)="changeRoute('/contact', 'Nous contacter')">Nous contacter</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" dropdownToggle href="toto">
+          Dropdown
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-right">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register" (click)="changeRoute('/register', 'Inscription')">S'inscrire</a>
+      </li>
+    </ul>
+  </div>
+</nav>

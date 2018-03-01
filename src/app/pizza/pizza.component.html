@@ -1,0 +1,14 @@
+<div class="card" [ngClass]="{ 'selected': selected }" *ngIf="pizza">
+  <div class="card-body">
+    <button (click)="hidePrice($event)" class="btn btn-primary">
+      <span *ngIf="!isHidden">Masquer le prix</span>
+      <span *ngIf="isHidden">Afficher le prix</span>
+      <!--<span *ngIf="!isHidden; else contentIsHidden">Masquer le prix</span>
+      <ng-template #contentIsHidden>Afficher le prix</ng-template>-->
+    </button>
+    <div>{{ pizza.id }}</div>
+    <div>{{ pizza.name | uppercase }}</div>
+    <input type="text" [(ngModel)]="pizza.name">
+    <div [hidden]="isHidden">{{ pizza.price | currency:'EUR' }}</div>
+  </div>
+</div>

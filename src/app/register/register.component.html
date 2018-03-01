@@ -1,0 +1,23 @@
+<form (submit)="register()" #registerForm="ngForm">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="email" class="form-control" id="email" required email [(ngModel)]="user.email" #email="ngModel" [class.is-invalid]="email.dirty && email.invalid">
+    <div *ngIf="email.dirty && email.invalid" class="invalid-feedback">L'email n'est pas valide</div>
+  </div>
+  <div class="form-group">
+    <label for="login">Login</label>
+    <input type="login" name="login" class="form-control" id="login" required [(ngModel)]="user.login" #login="ngModel" [class.is-invalid]="login.dirty && login.invalid">
+    <div *ngIf="login.dirty && login.invalid" class="invalid-feedback">Le login n'est pas valide</div>
+  </div>
+  <div class="form-group">
+    <label for="password">Mot de passe</label>
+    <input type="password" name="password" class="form-control" id="password" required [(ngModel)]="user.password" #password="ngModel" [class.is-invalid]="password.dirty && password.invalid">
+    <div *ngIf="password.dirty && password.invalid" class="invalid-feedback">Le mot de passe n'est pas valide</div>
+  </div>
+  <div class="form-group" *ngIf="password.dirty && password.valid">
+    <label for="cf-password">Confirmer le mot de passe</label>
+    <input type="password" name="cf-password" class="form-control" id="cf-password" required ngModel #cfPassword="ngModel" [class.is-invalid]="cfPassword.value !== password.value">
+    <div *ngIf="cfPassword.value !== password.value" class="invalid-feedback">Les mots de passe ne correspondent pas</div>
+  </div>
+  <button class="btn btn-primary" [disabled]="registerForm.invalid">S'inscrire</button>
+</form>
