@@ -6,6 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { createTranslateLoader } from './service/create-translate-loader';
+import { AngularFireModule } from 'angularfire2';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FakeApi } from './service/fake-api.service';
@@ -29,6 +30,7 @@ import { DropdownToggleDirective } from './directives/dropdown-toggle.directive'
 import { CounterComponent } from './counter/counter.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ContactComponent } from './contact/contact.component';
     DropdownToggleDirective,
     CounterComponent,
     RegisterComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { ContactComponent } from './contact/contact.component';
       {path: 'pizzas', component: PizzaListComponent},
       {path: 'pizza/:id', component: PizzaSingleComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'contact', component: ContactComponent}
+      {path: 'contact', component: ContactComponent},
+      {path: 'login', component: LoginComponent}
     ]),
     TranslateModule.forRoot({
       loader: {
@@ -63,12 +67,13 @@ import { ContactComponent } from './contact/contact.component';
         deps: [HttpClient]
       }
     }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     environment.production ?
       HttpClientInMemoryWebApiModule.forRoot(FakeApi, {passThruUnknownUrl: true}) : HttpClientInMemoryWebApiModule.forRoot(FakeApi, {passThruUnknownUrl: true})
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr' },
-    PizzaApiService,
+    PizzaApiService
   ],
   bootstrap: [AppComponent]
 })

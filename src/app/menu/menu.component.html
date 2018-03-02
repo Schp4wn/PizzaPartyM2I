@@ -26,9 +26,15 @@
           <a class="dropdown-item" (click)="switchLang('en')">en</a>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!user">
         <a class="nav-link" routerLink="/register" (click)="changeRoute('/register', 'Inscription')">S'inscrire</a>
       </li>
+      <li class="nav-item" *ngIf="!user">
+        <a class="nav-link" routerLink="/login" (click)="changeRoute('/login', 'Se connecter')">Se connecter</a>
+      </li>
+      <li class="nav-item" *ngIf="user">
+          <a class="nav-link" (click)="logout()">{{ user.email }} - Logout</a>
+        </li>
     </ul>
   </div>
 </nav>
